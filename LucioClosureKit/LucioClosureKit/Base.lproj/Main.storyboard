@@ -53,6 +53,18 @@
                                     <segue destination="tFx-cc-yXf" kind="show" id="16c-Dz-Td7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7Y-nq-93P">
+                                <rect key="frame" x="20" y="264" width="280" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9tC-1K-5c2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="TableView Test" backgroundImage="btn_n"/>
+                                <state key="highlighted" backgroundImage="btn_h"/>
+                                <connections>
+                                    <segue destination="01G-Ao-1SM" kind="show" id="x0A-Wy-yLB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -61,7 +73,10 @@
                             <constraint firstItem="o1D-pD-7p2" firstAttribute="leading" secondItem="VUD-2c-Cqh" secondAttribute="leading" constant="20" id="Pal-6w-edb"/>
                             <constraint firstAttribute="trailing" secondItem="2Eg-uR-GbJ" secondAttribute="trailing" constant="20" id="VbD-bo-bGV"/>
                             <constraint firstItem="2Eg-uR-GbJ" firstAttribute="top" secondItem="GOX-sb-mfM" secondAttribute="bottom" constant="20" id="b7Q-FQ-Z3H"/>
+                            <constraint firstItem="s7Y-nq-93P" firstAttribute="top" secondItem="o1D-pD-7p2" secondAttribute="bottom" constant="20" id="bsC-kW-D1N"/>
                             <constraint firstItem="2Eg-uR-GbJ" firstAttribute="leading" secondItem="VUD-2c-Cqh" secondAttribute="leading" constant="20" id="eVm-76-JpC"/>
+                            <constraint firstItem="s7Y-nq-93P" firstAttribute="leading" secondItem="VUD-2c-Cqh" secondAttribute="leading" constant="20" id="lGA-nv-vZg"/>
+                            <constraint firstAttribute="trailing" secondItem="s7Y-nq-93P" secondAttribute="trailing" constant="20" id="nvt-UJ-hBT"/>
                             <constraint firstAttribute="trailing" secondItem="qaQ-Ki-VHn" secondAttribute="trailing" constant="20" id="qz7-Oz-d2Q"/>
                             <constraint firstItem="qaQ-Ki-VHn" firstAttribute="leading" secondItem="VUD-2c-Cqh" secondAttribute="leading" constant="20" id="vj4-84-2pv"/>
                             <constraint firstItem="qaQ-Ki-VHn" firstAttribute="top" secondItem="2Eg-uR-GbJ" secondAttribute="bottom" constant="20" id="whj-bb-hFM"/>
@@ -140,10 +155,10 @@
             </objects>
             <point key="canvasLocation" x="1318" y="409"/>
         </scene>
-        <!--Table View Test View Controller-->
+        <!--Text View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TableViewTestViewController" customModule="LucioClosureKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TextViewController" customModule="LucioClosureKit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -280,6 +295,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WO-jP-Gfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="165" y="389"/>
+        </scene>
+        <!--Table View Test View Controller-->
+        <scene sceneID="cRt-nF-TTJ">
+            <objects>
+                <viewController id="01G-Ao-1SM" customClass="TableViewTestViewController" customModule="LucioClosureKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qSf-yQ-mr1"/>
+                        <viewControllerLayoutGuide type="bottom" id="ep8-Mp-y1Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jrE-XP-w66">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1w7-dH-8cP" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="534" y="954"/>
         </scene>
     </scenes>
     <resources>
