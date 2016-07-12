@@ -140,10 +140,10 @@
             </objects>
             <point key="canvasLocation" x="1318" y="409"/>
         </scene>
-        <!--Text View Controller-->
+        <!--Table View Test View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TextViewController" customModule="LucioClosureKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TableViewTestViewController" customModule="LucioClosureKit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C63343571D34AA1900CFF0C2 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63343561D34AA1900CFF0C2 /* TextViewController.swift */; };
 		C63343591D34B09F00CFF0C2 /* ObserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63343581D34B09F00CFF0C2 /* ObserveViewController.swift */; };
+		C633435D1D34E7B600CFF0C2 /* UITableView_ClosureKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C633435C1D34E7B600CFF0C2 /* UITableView_ClosureKit.swift */; };
+		C633435F1D35076700CFF0C2 /* TableViewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C633435E1D35076700CFF0C2 /* TableViewTestViewController.swift */; };
 		C63B34771D338F4D00244C10 /* UIActionSheet+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B34731D338F4D00244C10 /* UIActionSheet+Extension.swift */; };
 		C63B34781D338F4D00244C10 /* UIAlertView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B34741D338F4D00244C10 /* UIAlertView+Extension.swift */; };
 		C63B34791D338F4D00244C10 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B34751D338F4D00244C10 /* UITextField+Extension.swift */; };
@@ -25,6 +27,8 @@
 		C63343521D3499DB00CFF0C2 /* LucioClosureKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LucioClosureKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		C63343561D34AA1900CFF0C2 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		C63343581D34B09F00CFF0C2 /* ObserveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserveViewController.swift; sourceTree = "<group>"; };
+		C633435C1D34E7B600CFF0C2 /* UITableView_ClosureKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView_ClosureKit.swift; sourceTree = "<group>"; };
+		C633435E1D35076700CFF0C2 /* TableViewTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewTestViewController.swift; sourceTree = "<group>"; };
 		C63B34731D338F4D00244C10 /* UIActionSheet+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActionSheet+Extension.swift"; sourceTree = "<group>"; };
 		C63B34741D338F4D00244C10 /* UIAlertView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertView+Extension.swift"; sourceTree = "<group>"; };
 		C63B34751D338F4D00244C10 /* UITextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -57,6 +61,7 @@
 				C63B34741D338F4D00244C10 /* UIAlertView+Extension.swift */,
 				C63B34751D338F4D00244C10 /* UITextField+Extension.swift */,
 				C63B34761D338F4D00244C10 /* UITextView+Extension.swift */,
+				C633435C1D34E7B600CFF0C2 /* UITableView_ClosureKit.swift */,
 				C63B347B1D339AA000244C10 /* NSObject+Extension.swift */,
 			);
 			path = LucioClosureKit;
@@ -86,6 +91,7 @@
 				C6885B9A1D2EA8BC00A1EFD6 /* AlertViewController.swift */,
 				C63343561D34AA1900CFF0C2 /* TextViewController.swift */,
 				C63343581D34B09F00CFF0C2 /* ObserveViewController.swift */,
+				C633435E1D35076700CFF0C2 /* TableViewTestViewController.swift */,
 				C6885B9C1D2EA8BC00A1EFD6 /* Main.storyboard */,
 				C6885B9F1D2EA8BC00A1EFD6 /* Assets.xcassets */,
 				C6885BA11D2EA8BC00A1EFD6 /* LaunchScreen.storyboard */,
@@ -171,7 +177,9 @@
 				C63343591D34B09F00CFF0C2 /* ObserveViewController.swift in Sources */,
 				C6885B991D2EA8BC00A1EFD6 /* AppDelegate.swift in Sources */,
 				C63B34771D338F4D00244C10 /* UIActionSheet+Extension.swift in Sources */,
+				C633435F1D35076700CFF0C2 /* TableViewTestViewController.swift in Sources */,
 				C63B34781D338F4D00244C10 /* UIAlertView+Extension.swift in Sources */,
+				C633435D1D34E7B600CFF0C2 /* UITableView_ClosureKit.swift in Sources */,
 				C63B347C1D339AA000244C10 /* NSObject+Extension.swift in Sources */,
 				C63343571D34AA1900CFF0C2 /* TextViewController.swift in Sources */,
 			);
