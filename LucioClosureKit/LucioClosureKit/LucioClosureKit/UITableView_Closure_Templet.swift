@@ -10,7 +10,7 @@ import UIKit
 
 // 因为UITableView的特殊性，不推荐直接使用扩展来实现Delegate和DataSource的Block化
 // 这是一个实现方案的模板，按实际所需，选择需要的属性和方法
-public class TableViewDeleageAdapter: NSObject,UITableViewDelegate {
+public class TableViewDelegateAdapter: NSObject,UITableViewDelegate {
     
     // Display customization
     private var willDisplayCell: ((UITableView,UITableViewCell,NSIndexPath) -> Void)!
@@ -362,7 +362,7 @@ public class TableViewDeleageAdapter: NSObject,UITableViewDelegate {
     }
 }
 @available(iOS 8.0, *)
-public class TableViewDeleageAdapter_iOS_8: TableViewDeleageAdapter {
+public class TableViewDeleageAdapter_iOS_8: TableViewDelegateAdapter {
     // supercedes -tableView:titleForDeleteConfirmationButtonForRowAtIndexPath: if return value is non-nil
     private var editActionsForRowAtIndexPath: ((UITableView,NSIndexPath) -> [UITableViewRowAction]?)!
     @available(iOS 8.0, *)

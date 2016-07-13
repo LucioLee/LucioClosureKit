@@ -11,8 +11,8 @@ import UIKit
 class TableViewTestViewController: UIViewController {
     
     weak var table: UITableView!
-    var delegateAdapter: MyTableViewDeleageAdapter!
-    var datasourceAdapter: MyTableViewDatasourceAdapter!
+    var delegateAdapter: MyTableViewDelegateAdapter!
+    var datasourceAdapter: MyTableViewDataSourceAdapter!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,13 +23,13 @@ class TableViewTestViewController: UIViewController {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[tableView]-0-|", options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: ["tableView":tableView]))
         table = tableView
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        let tableViewDelegateAdapter = MyTableViewDeleageAdapter()
+        let tableViewDelegateAdapter = MyTableViewDelegateAdapter()
         delegateAdapter = tableViewDelegateAdapter
         tableView.delegate = tableViewDelegateAdapter
         tableViewDelegateAdapter.didSelectRowAtIndexPath { (tableView, indexPath) in
             print("selected indexPath is \(indexPath)")
         }
-        let tableViewDatasourceAdapter = MyTableViewDatasourceAdapter()
+        let tableViewDatasourceAdapter = MyTableViewDataSourceAdapter()
         datasourceAdapter = tableViewDatasourceAdapter
         tableView.dataSource = tableViewDatasourceAdapter
         datasourceAdapter.numberOfRowsInSection { (tableView, section) -> Int in
@@ -43,7 +43,7 @@ class TableViewTestViewController: UIViewController {
     }
 }
 
-public class MyTableViewDeleageAdapter: NSObject,UITableViewDelegate {
+public class MyTableViewDelegateAdapter: NSObject,UITableViewDelegate {
     
     
     private var didSelectRowAtIndexPath: ((UITableView,NSIndexPath) -> Void)!
@@ -60,7 +60,7 @@ public class MyTableViewDeleageAdapter: NSObject,UITableViewDelegate {
 
 
 
-public class MyTableViewDatasourceAdapter: NSObject,UITableViewDataSource {
+public class MyTableViewDataSourceAdapter: NSObject,UITableViewDataSource {
 
     private var numberOfRowsInSection: ((UITableView,Int) -> Int)!
     
