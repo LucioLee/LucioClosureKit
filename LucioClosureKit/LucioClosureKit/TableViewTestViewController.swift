@@ -43,8 +43,25 @@ class TableViewTestViewController: UIViewController {
     }
 }
 
-public class MyTableViewDatasourceAdapter: NSObject,UITableViewDataSource {
+public class MyTableViewDeleageAdapter: NSObject,UITableViewDelegate {
     
+    
+    private var didSelectRowAtIndexPath: ((UITableView,NSIndexPath) -> Void)!
+    
+    public func didSelectRowAtIndexPath(handler:((tableView: UITableView, indexPath: NSIndexPath) -> Void)) {
+        didSelectRowAtIndexPath = handler
+    }
+    
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        didSelectRowAtIndexPath!(tableView, indexPath)
+    }
+    
+}
+
+
+
+public class MyTableViewDatasourceAdapter: NSObject,UITableViewDataSource {
+
     private var numberOfRowsInSection: ((UITableView,Int) -> Int)!
     
     public func numberOfRowsInSection(handler: ((tableView: UITableView, section: Int) -> Int)) {
@@ -64,19 +81,3 @@ public class MyTableViewDatasourceAdapter: NSObject,UITableViewDataSource {
         return cellForRowAtIndexPath(tableView, indexPath)
     }
 }
-
-public class MyTableViewDeleageAdapter: NSObject,UITableViewDelegate {
-    
-    private var didSelectRowAtIndexPath: ((UITableView,NSIndexPath) -> Void)!
-    
-    public func didSelectRowAtIndexPath(handler:((tableView: UITableView, indexPath: NSIndexPath) -> Void)) {
-        didSelectRowAtIndexPath = handler
-    }
-    
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        didSelectRowAtIndexPath!(tableView, indexPath)
-    }
-    
-}
-
-
