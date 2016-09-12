@@ -98,11 +98,11 @@
                         <viewControllerLayoutGuide type="bottom" id="LJV-4i-gly"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vPB-Yc-tPh">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HO8-fZ-xDH">
-                                <rect key="frame" x="20" y="20" width="280" height="30"/>
+                                <rect key="frame" x="20" y="84" width="280" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="y7S-KS-ucO"/>
                                 </constraints>
@@ -110,7 +110,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入年龄" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oGG-Do-PIh">
-                                <rect key="frame" x="20" y="70" width="280" height="30"/>
+                                <rect key="frame" x="20" y="134" width="280" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="wpz-Uv-PXv"/>
                                 </constraints>
@@ -118,7 +118,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2f-cZ-afe">
-                                <rect key="frame" x="20" y="120" width="280" height="40"/>
+                                <rect key="frame" x="20" y="184" width="280" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="SvQ-iO-9OI"/>
                                 </constraints>
@@ -143,7 +143,6 @@
                             <constraint firstItem="u2f-cZ-afe" firstAttribute="leading" secondItem="vPB-Yc-tPh" secondAttribute="leading" constant="20" id="mxZ-KD-1Nb"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="ageInput" destination="oGG-Do-PIh" id="Hm9-q6-PX8"/>
@@ -164,11 +163,10 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -184,11 +182,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7bK-FE-tQJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fc1-pA-xdW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEX-kt-YVK">
-                                <rect key="frame" x="20" y="20" width="280" height="40"/>
+                                <rect key="frame" x="20" y="84" width="280" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="QAX-A1-VVN"/>
                                 </constraints>
@@ -200,7 +198,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K9-H5-5ux">
-                                <rect key="frame" x="20" y="80" width="280" height="40"/>
+                                <rect key="frame" x="20" y="144" width="280" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="shn-sC-J1J"/>
                                 </constraints>
@@ -212,7 +210,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSM-oj-hU6">
-                                <rect key="frame" x="20" y="184" width="280" height="40"/>
+                                <rect key="frame" x="20" y="248" width="280" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="My7-rq-js2"/>
                                 </constraints>
@@ -224,7 +222,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSE-GB-PDw">
-                                <rect key="frame" x="20" y="140" width="30" height="17"/>
+                                <rect key="frame" x="20" y="204" width="30" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Ewc-gE-92G"/>
                                     <constraint firstAttribute="height" constant="17" id="qS3-Gs-bwA"/>
@@ -234,7 +232,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-Ta-llU">
-                                <rect key="frame" x="270" y="140" width="29.5" height="17"/>
+                                <rect key="frame" x="270" y="204" width="29.5" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Mxz-Aw-eGd"/>
                                     <constraint firstAttribute="height" constant="17" id="YhD-gl-sdq"/>
@@ -244,7 +242,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tEb-mR-Lze">
-                                <rect key="frame" x="48" y="134" width="224" height="31"/>
+                                <rect key="frame" x="48" y="198" width="224" height="31"/>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -267,7 +265,6 @@
                             <constraint firstItem="zSE-GB-PDw" firstAttribute="leading" secondItem="Fc1-pA-xdW" secondAttribute="leading" constant="20" id="ygS-6U-P5R"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="slider" destination="tEb-mR-Lze" id="iAL-Ll-aFy"/>
@@ -305,11 +302,10 @@
                         <viewControllerLayoutGuide type="bottom" id="ep8-Mp-y1Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jrE-XP-w66">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1w7-dH-8cP" sceneMemberID="firstResponder"/>
