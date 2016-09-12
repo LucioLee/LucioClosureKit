@@ -10,28 +10,28 @@ import UIKit
 
 public extension UITextField {
 
-    public func shouldBeginEditing(handler: ((textField: UITextField) -> Bool)) {
+    public func shouldBeginEditing(_ handler: ((_ textField: UITextField) -> Bool)) {
         delegateAdapter.shouldBeginEditing = handler
     }
-    public func shouldEndEditing(handler: ((textField: UITextField) -> Bool)) {
+    public func shouldEndEditing(_ handler: ((_ textField: UITextField) -> Bool)) {
         delegateAdapter.shouldEndEditing = handler
     }
-    public func didBeginEditing(handler: ((textField: UITextField) -> Void)) {
+    public func didBeginEditing(_ handler: ((_ textField: UITextField) -> Void)) {
         delegateAdapter.didBeginEditing = handler
     }
-    public func didEndEditing(handler: ((textField: UITextField) -> Void)) {
+    public func didEndEditing(_ handler: ((_ textField: UITextField) -> Void)) {
         delegateAdapter.didEndEditing = handler
     }
-    public func shouldChangeTextInRange(handler:((textView:UITextField, range: NSRange, text: String) -> Bool)) {
+    public func shouldChangeTextInRange(_ handler:((_ textView:UITextField, _ range: NSRange, _ text: String) -> Bool)) {
         delegateAdapter.shouldChangeTextInRange = handler
     }
-    public func shouldClear(handler: ((textField: UITextField) -> Bool)) {
+    public func shouldClear(_ handler: ((_ textField: UITextField) -> Bool)) {
         delegateAdapter.shouldClear = handler
     }
-    public func shouldReturn(handler: ((textField: UITextField) -> Bool)) {
+    public func shouldReturn(_ handler: ((_ textField: UITextField) -> Bool)) {
         delegateAdapter.shouldReturn = handler
     }
-    private var delegateAdapter: TextFieldDelegateAdapter {
+    fileprivate var delegateAdapter: TextFieldDelegateAdapter {
         struct Adapter {
             static var KTextFieldDelegateAdapter = "KTextFieldDelegateAdapter"
         }
@@ -47,33 +47,33 @@ public extension UITextField {
 
 private class TextFieldDelegateAdapter: NSObject, UITextFieldDelegate {
     
-    var shouldBeginEditing: (UITextField -> Bool)?
-    var shouldEndEditing: (UITextField -> Bool)?
-    var shouldReturn: (UITextField -> Bool)?
-    var shouldClear: (UITextField -> Bool)?
-    var didBeginEditing: (UITextField -> Void)?
-    var didEndEditing: (UITextField -> Void)?
+    var shouldBeginEditing: ((UITextField) -> Bool)?
+    var shouldEndEditing: ((UITextField) -> Bool)?
+    var shouldReturn: ((UITextField) -> Bool)?
+    var shouldClear: ((UITextField) -> Bool)?
+    var didBeginEditing: ((UITextField) -> Void)?
+    var didEndEditing: ((UITextField) -> Void)?
     var shouldChangeTextInRange: ((UITextField,NSRange,String) -> Bool)?
     
-    @objc func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    @objc func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return shouldBeginEditing?(textField) ?? true
     }
-    @objc func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    @objc func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return shouldEndEditing?(textField) ?? true
     }
-    @objc func textFieldDidBeginEditing(textField: UITextField) {
+    @objc func textFieldDidBeginEditing(_ textField: UITextField) {
         didBeginEditing?(textField)
     }
-    @objc func textFieldDidEndEditing(textField: UITextField) {
+    @objc func textFieldDidEndEditing(_ textField: UITextField) {
         didEndEditing?(textField)
     }
-    @objc func textFieldShouldClear(textField: UITextField) -> Bool {
+    @objc func textFieldShouldClear(_ textField: UITextField) -> Bool {
        return shouldClear?(textField) ?? false
     }
-    @objc func textFieldShouldReturn(textField: UITextField) -> Bool {
+    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return shouldReturn?(textField) ?? true
     }
-    @objc func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    @objc func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return shouldChangeTextInRange?(textField,range,string) ?? true
     }
 }

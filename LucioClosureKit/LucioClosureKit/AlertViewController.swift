@@ -17,18 +17,18 @@ class AlertViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func showActionSheet(sender: AnyObject) {
+    @IBAction func showActionSheet(_ sender: AnyObject) {
         showActionSheet()
     }
     
-    @IBAction func showAlertView(sender: AnyObject) {
+    @IBAction func showAlertView(_ sender: AnyObject) {
         showAlert(duration: 0)
     }
-    @IBAction func showAlertViewWithDuration(sender: AnyObject) {
+    @IBAction func showAlertViewWithDuration(_ sender: AnyObject) {
         showAlert(duration: Double(slider.value) * 10)
     }
     
-    func showAlert(duration duration:NSTimeInterval) {
+    func showAlert(duration:TimeInterval) {
         let alertview =  UIAlertView(title: "警告", message: "内存不足,是否退出", cancelButtonTitle: "取消", otherButtonTitles: ["确定"]){(alertview,buttonIndex) in
             print("button clicked")
         }
@@ -73,7 +73,7 @@ class AlertViewController: UIViewController {
         actionSheet.didDissmiss { (actionSheet, buttonIndex) in
             print("actionSheet did dismiss with buttonIndex : \(buttonIndex)")
         }
-        actionSheet.showInView(view)
+        actionSheet.show(in: view)
     }
 }
 

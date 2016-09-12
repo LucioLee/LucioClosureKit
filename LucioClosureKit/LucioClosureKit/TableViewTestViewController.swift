@@ -19,10 +19,10 @@ class TableViewTestViewController: UIViewController {
         let tableView = UITableView()
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[tableView]-0-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: ["tableView":tableView]))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[tableView]-0-|", options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: ["tableView":tableView]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tableView]-0-|", options: NSLayoutFormatOptions.alignAllLeft, metrics: nil, views: ["tableView":tableView]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tableView]-0-|", options: NSLayoutFormatOptions.alignAllTop, metrics: nil, views: ["tableView":tableView]))
         table = tableView
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         let tableViewDelegateAdapter = MyTableViewDelegateAdapter()
         delegateAdapter = tableViewDelegateAdapter
         tableView.delegate = tableViewDelegateAdapter
@@ -36,23 +36,23 @@ class TableViewTestViewController: UIViewController {
             return 100
         }
         datasourceAdapter.cellForRowAtIndexPath { (tableView, indexPath) -> UITableViewCell in
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             cell.textLabel?.text = "test"
             return cell
         }
     }
 }
 
-public class MyTableViewDelegateAdapter: NSObject,UITableViewDelegate {
+open class MyTableViewDelegateAdapter: NSObject,UITableViewDelegate {
     
     
-    private var didSelectRowAtIndexPath: ((UITableView,NSIndexPath) -> Void)!
+    fileprivate var didSelectRowAtIndexPath: ((UITableView,IndexPath) -> Void)!
     
-    public func didSelectRowAtIndexPath(handler:((tableView: UITableView, indexPath: NSIndexPath) -> Void)) {
+    open func didSelectRowAtIndexPath(_ handler:((_ tableView: UITableView, _ indexPath: IndexPath) -> Void)) {
         didSelectRowAtIndexPath = handler
     }
     
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectRowAtIndexPath!(tableView, indexPath)
     }
     
@@ -60,24 +60,24 @@ public class MyTableViewDelegateAdapter: NSObject,UITableViewDelegate {
 
 
 
-public class MyTableViewDataSourceAdapter: NSObject,UITableViewDataSource {
+open class MyTableViewDataSourceAdapter: NSObject,UITableViewDataSource {
 
-    private var numberOfRowsInSection: ((UITableView,Int) -> Int)!
+    fileprivate var numberOfRowsInSection: ((UITableView,Int) -> Int)!
     
-    public func numberOfRowsInSection(handler: ((tableView: UITableView, section: Int) -> Int)) {
+    open func numberOfRowsInSection(_ handler: ((_ tableView: UITableView, _ section: Int) -> Int)) {
         numberOfRowsInSection = handler
     }
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfRowsInSection(tableView, section)
     }
 
-    private var cellForRowAtIndexPath: ((UITableView,NSIndexPath) -> UITableViewCell)!
+    fileprivate var cellForRowAtIndexPath: ((UITableView,IndexPath) -> UITableViewCell)!
     
-    public func cellForRowAtIndexPath(handler: ((tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell)) {
+    open func cellForRowAtIndexPath(_ handler: ((_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell)) {
         cellForRowAtIndexPath = handler
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cellForRowAtIndexPath(tableView, indexPath)
     }
 }

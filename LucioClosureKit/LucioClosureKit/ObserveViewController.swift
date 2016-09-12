@@ -23,7 +23,7 @@ class ObserveViewController: UIViewController {
     
     @IBOutlet weak var commitbtn: UIButton!
     // 仅作测试就不校验了，不要胡乱输入
-    @IBAction func commit(sender: AnyObject) {
+    @IBAction func commit(_ sender: AnyObject) {
         person.name = nameInput.text!.trim.isEmpty ? "小明" : nameInput.text!.trim
         person.age = ageInput.text!.trim.isEmpty ? 18 : (ageInput.text!.trim.isPureInt ? Int(ageInput.text!.trim)! : 18)
         commitbtn.postEvent(event: "commitButtonClickedNotification")
@@ -32,21 +32,21 @@ class ObserveViewController: UIViewController {
          super.viewDidLoad()
 
         // KVO
-        self.observe(object: person, keyPath: "name", options:[.New,.Old]) { (object, keyPath, changes) in
+        self.observe(object: person, keyPath: "name", options:[.new,.old]) { (object, keyPath, changes) in
             print("object is \(object), keyPath is \(keyPath) change is \(changes)")
         }
-        self.observe(object: person, keyPath: "age", options:[.New,.Old]) { (object, keyPath, changes) in
+        self.observe(object: person, keyPath: "age", options:[.new,.old]) { (object, keyPath, changes) in
             print("object is \(object), keyPath is \(keyPath) change is \(changes)")
         }
 
         self.observe { (notification) in
-            print("监听所有通知：name is \(notification.name)")
+            print("监听所有通知：name is \(notification.name.rawValue)")
         }
         self.observe(event: "commitButtonClickedNotification") { (notification) in
-            print("根据通知名监听通知：name is \(notification.name)")
+            print("根据通知名监听通知：name is \(notification.name.rawValue)")
         }
         self.observe(event: "commitButtonClickedNotification", object: commitbtn) { (notification) in
-            print("监听指定对象的指定通知：name is \(notification.name), object is \(notification.object)")
+            print("监听指定对象的指定通知：name is \(notification.name.rawValue), object is \(notification.object)")
         }
     }
     
@@ -60,12 +60,12 @@ class ObserveViewController: UIViewController {
 
 extension String {
     public var trim: String {
-        return stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
     public var isPureInt: Bool {
-        let scanner = NSScanner(string: self)
+        let scanner = Scanner(string: self)
         var value: Int32 = 0 //从下标0开始，扫描到的数字，碰到非数字就停止。比如 string = "12ss",则value = 12
-        return scanner.scanInt(&value) && scanner.atEnd
+        return scanner.scanInt32(&value) && scanner.isAtEnd
     }
 }

@@ -13,14 +13,14 @@ class TextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.lightGrayColor()
+        view.backgroundColor = UIColor.lightGray
         
         let margin:CGFloat = 10
-        let screenWidth = UIScreen.mainScreen().bounds.width
+        let screenWidth = UIScreen.main.bounds.width
         
         let textField = UITextField(frame: CGRect(x: margin, y: 20, width: screenWidth - 2 * margin, height: 40))
-        textField.backgroundColor = UIColor.whiteColor()
-        textField.clearButtonMode = .Always
+        textField.backgroundColor = UIColor.white
+        textField.clearButtonMode = .always
         view.addSubview(textField)
         
         textField.shouldBeginEditing { (textField) -> Bool in
@@ -52,9 +52,9 @@ class TextViewController: UIViewController {
         }
         
         let textView = UITextView(frame: CGRect(x: margin, y: 65, width: screenWidth - margin * 2, height: 400))
-        textView.backgroundColor = UIColor.whiteColor()
-        textView.returnKeyType = UIReturnKeyType.Done
-        textView.font = UIFont.systemFontOfSize(16)
+        textView.backgroundColor = UIColor.white
+        textView.returnKeyType = UIReturnKeyType.done
+        textView.font = UIFont.systemFont(ofSize: 16)
         
 //        let attrStr = NSMutableAttributedString(string: "This is an example by @marcelofabri_")
 //        attrStr.addAttribute(NSLinkAttributeName, value: "username://marcelofabri_", range: (attrStr.string as NSString).rangeOfString("@marcelofabri_"))

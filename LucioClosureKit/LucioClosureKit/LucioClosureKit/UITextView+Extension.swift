@@ -9,39 +9,39 @@
 import UIKit
 
 public extension UITextView {
-    public func shouldReturn(handler: ((textView: UITextView) -> Bool)) {
+    public func shouldReturn(_ handler: ((_ textView: UITextView) -> Bool)) {
         delegateAdapter.shouldReturn = handler
     }
-    public func shouldBeginEditing(handler: ((textView: UITextView) -> Bool)) {
+    public func shouldBeginEditing(_ handler: ((_ textView: UITextView) -> Bool)) {
         delegateAdapter.shouldBeginEditing = handler
     }
-    public func shouldEndEditing(handler: ((textView: UITextView) -> Bool)) {
+    public func shouldEndEditing(_ handler: ((_ textView: UITextView) -> Bool)) {
         delegateAdapter.shouldEndEditing = handler
     }
-    public func didBeginEditing(handler: ((textView: UITextView) -> Void)) {
+    public func didBeginEditing(_ handler: ((_ textView: UITextView) -> Void)) {
         delegateAdapter.didBeginEditing = handler
     }
-    public func didEndEditing(handler: ((textView: UITextView) -> Void)) {
+    public func didEndEditing(_ handler: ((_ textView: UITextView) -> Void)) {
         delegateAdapter.didEndEditing = handler
     }
-    public func didChange(handler: ((textView: UITextView) -> Void)) {
+    public func didChange(_ handler: ((_ textView: UITextView) -> Void)) {
         delegateAdapter.didChange = handler
     }
-    public func didChangeSelection(handler: ((textView: UITextView) -> Void)) {
+    public func didChangeSelection(_ handler: ((_ textView: UITextView) -> Void)) {
         delegateAdapter.didChangeSelection = handler
     }
-    public func shouldChangeTextInRange(handler:((textView:UITextView, range: NSRange, text: String) -> Bool)) {
+    public func shouldChangeTextInRange(_ handler:((_ textView:UITextView, _ range: NSRange, _ text: String) -> Bool)) {
         delegateAdapter.shouldChangeTextInRange = handler
     }
     @available(iOS 7.0, *)
-    public func shouldInteractWithURL(handler:((textView:UITextView, url: NSURL, range: NSRange) -> Bool)) {
+    public func shouldInteractWithURL(_ handler:((_ textView:UITextView, _ url: URL, _ range: NSRange) -> Bool)) {
         delegateAdapter.shouldInteractWithURL = handler
     }
     @available(iOS 7.0, *)
-    public func shouldInteractWithTextAttachment(handler:((textView:UITextView, textAttachment: NSTextAttachment, range: NSRange) -> Bool)) {
+    public func shouldInteractWithTextAttachment(_ handler:((_ textView:UITextView, _ textAttachment: NSTextAttachment, _ range: NSRange) -> Bool)) {
         delegateAdapter.shouldInteractWithTextAttachment = handler
     }
-    private var delegateAdapter: TextViewDelegateAdapter {
+    fileprivate var delegateAdapter: TextViewDelegateAdapter {
         struct Adapter {
             static var KTextViewDelegateAdapter = "KTextViewDelegateAdapter"
         }
@@ -57,44 +57,44 @@ public extension UITextView {
 
 private class TextViewDelegateAdapter: NSObject, UITextViewDelegate {
     
-    var shouldBeginEditing: (UITextView -> Bool)?
-    var shouldEndEditing: (UITextView -> Bool)?
-    var shouldReturn: (UITextView -> Bool)?
-    var didBeginEditing: (UITextView -> Void)?
-    var didEndEditing: (UITextView -> Void)?
-    var didChange: (UITextView -> Void)?
-    var didChangeSelection: (UITextView -> Void)?
+    var shouldBeginEditing: ((UITextView) -> Bool)?
+    var shouldEndEditing: ((UITextView) -> Bool)?
+    var shouldReturn: ((UITextView) -> Bool)?
+    var didBeginEditing: ((UITextView) -> Void)?
+    var didEndEditing: ((UITextView) -> Void)?
+    var didChange: ((UITextView) -> Void)?
+    var didChangeSelection: ((UITextView) -> Void)?
     var shouldChangeTextInRange: ((UITextView,NSRange,String) -> Bool)?
-    var shouldInteractWithURL: ((UITextView,NSURL,NSRange) -> Bool)?
+    var shouldInteractWithURL: ((UITextView,URL,NSRange) -> Bool)?
     var shouldInteractWithTextAttachment: ((UITextView,NSTextAttachment,NSRange) -> Bool)?
     
-    @objc func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+    @objc func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         return shouldBeginEditing?(textView) ?? true
     }
-    @objc func textViewShouldEndEditing(textView: UITextView) -> Bool {
+    @objc func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         return shouldEndEditing?(textView) ?? true
     }
-    @objc func textViewDidBeginEditing(textView: UITextView) {
+    @objc func textViewDidBeginEditing(_ textView: UITextView) {
         didBeginEditing?(textView)
     }
-    @objc func textViewDidEndEditing(textView: UITextView) {
+    @objc func textViewDidEndEditing(_ textView: UITextView) {
         didEndEditing?(textView)
     }
-    @objc func textViewDidChange(textView: UITextView) {
+    @objc func textViewDidChange(_ textView: UITextView) {
         didChange?(textView)
     }
-    @objc func textViewDidChangeSelection(textView: UITextView) {
+    @objc func textViewDidChangeSelection(_ textView: UITextView) {
         didChangeSelection?(textView)
     }
-    @objc func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+    @objc func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         return shouldInteractWithURL?(textView,URL,characterRange) ?? true
     }
-    @objc func textView(textView: UITextView, shouldInteractWithTextAttachment textAttachment: NSTextAttachment, inRange characterRange: NSRange) -> Bool {
+    @objc func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
         return shouldInteractWithTextAttachment?(textView,textAttachment,characterRange) ?? true
     }
-    @objc func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    @objc func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        if text == "\n",let shouldReturnResult = shouldReturn?(textView) where shouldReturnResult == false {
+        if text == "\n",let shouldReturnResult = shouldReturn?(textView) , shouldReturnResult == false {
             return false
         }
         return shouldChangeTextInRange?(textView,range,text) ?? true

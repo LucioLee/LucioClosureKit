@@ -14,12 +14,12 @@ let showDeinitDescription = true
 public extension NSObject {
     /// 发送一条通知
     public func postEvent(event eventName: String, userInfo:[NSObject : AnyObject]? = nil) {
-        NSNotificationCenter.defaultCenter().postNotificationName(eventName, object: self, userInfo: userInfo)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: eventName), object: self, userInfo: userInfo)
     }
     /// 监听通知事件
     /// - Note: eventName 为要监听的通知名称；如果eventName为nil,则监听所有通知事件
     /// - Note: object为要监听的对象；如果object为nil,则监听所有对象
-    public func observe(event eventName: String? = nil, object: AnyObject? = nil, handler: ((notification: NSNotification) -> Void)) {
+    public func observe(event eventName: String? = nil, object: AnyObject? = nil, handler: ((_ notification: Notification) -> Void)) {
         let eventObserver = EventObserver(eventName: eventName, observeredObject: object, handler: handler)
         eventObserver.observer()
         observerManager.eventObservers.append(eventObserver)
@@ -31,25 +31,25 @@ public extension NSObject {
         if eventName == nil && object == nil {
             observerManager.eventObservers.removeAll()
         } else if eventName != nil && object == nil {
-            0.stride(to: observerManager.eventObservers.count, by: 1).filter({ (index) -> Bool in
+            stride(from: 0, to: observerManager.eventObservers.count, by: 1).filter({ (index) -> Bool in
                 let observer = observerManager.eventObservers[index]
                 return (observer.eventName != nil && observer.eventName! == eventName!) ? true : false
-            }).reverse().forEach{ observerManager.eventObservers.removeAtIndex($0) }
+            }).reversed().forEach{ observerManager.eventObservers.remove(at: $0) }
         } else if eventName == nil && object != nil {
             
-            0.stride(to: observerManager.eventObservers.count, by: 1).filter({ (index) -> Bool in
+            stride(from: 0, to: observerManager.eventObservers.count, by: 1).filter({ (index) -> Bool in
                 let observer = observerManager.eventObservers[index]
                 return (observer.observeredObject != nil && observer.observeredObject!.isEqual(object!)) ? true : false
-            }).reverse().forEach { observerManager.eventObservers.removeAtIndex($0) }
+            }).reversed().forEach { observerManager.eventObservers.remove(at: $0) }
         } else {
-            0.stride(to: observerManager.eventObservers.count, by: 1).filter { (index) in
+            stride(from: 0, to: observerManager.eventObservers.count, by: 1).filter { (index) in
                 let observer = observerManager.eventObservers[index]
                 return (observer.eventName != nil && observer.eventName! == eventName! && observer.observeredObject != nil && observer.observeredObject!.isEqual(object!)) ? true : false
-                }.reverse().forEach { observerManager.eventObservers.removeAtIndex($0) }
+                }.reversed().forEach { observerManager.eventObservers.remove(at: $0) }
         }
     }
     
-    private var observerManager: AssociatedObserverManager {
+    fileprivate var observerManager: AssociatedObserverManager {
         struct Adapter {
             static var KAssociatedObserverManager = "KAssociatedObserverManager"
         }
@@ -62,7 +62,7 @@ public extension NSObject {
     }
 }
 public extension NSObject {
-    public func observe(object anObject: NSObject,keyPath: String,options: NSKeyValueObservingOptions,handler:((object: NSObject?,keyPath:String?,changes:[String : AnyObject]?) -> Void)) {
+    public func observe(object anObject: NSObject,keyPath: String,options: NSKeyValueObservingOptions,handler:((_ object: NSObject?,_ keyPath:String?,_ changes:[NSKeyValueChangeKey : Any]?) -> Void)) {
         let kvobserver = KVObserver(keyPath: keyPath, object: anObject, options: options,handler: handler)
         kvobserver.observer()
         observerManager.KVObservers.append(kvobserver)
@@ -71,16 +71,16 @@ public extension NSObject {
         observerManager.KVObservers.removeAll()
     }
     public func unObserve(object anObject: NSObject) {
-        0.stride(to: observerManager.KVObservers.count, by: 1).filter { (index) in
+        stride(from: 0, to: observerManager.KVObservers.count, by: 1).filter { (index) in
             let kvobserver = observerManager.KVObservers[index]
             return (kvobserver.object!.isEqual(anObject)) ? true : false
-            }.reverse().forEach{ observerManager.KVObservers.removeAtIndex($0)}
+            }.reversed().forEach{ observerManager.KVObservers.remove(at: $0)}
     }
     public func unObserve(object anObject: NSObject,keyPath: String) {
-        0.stride(to: observerManager.KVObservers.count, by: 1).filter { (index) in
+        stride(from: 0, to: observerManager.KVObservers.count, by: 1).filter { (index) in
             let kvobserver = observerManager.KVObservers[index]
             return (kvobserver.keyPath == keyPath && kvobserver.object!.isEqual(anObject)) ? true : false
-            }.reverse().forEach{ observerManager.KVObservers.removeAtIndex($0)}
+            }.reversed().forEach{ observerManager.KVObservers.remove(at: $0)}
     }
 }
 
@@ -91,20 +91,20 @@ private class AssociatedObserverManager {
 private class EventObserver {
     var eventName: String?
     weak var observeredObject: AnyObject?
-    var handler: (NSNotification -> Void)
+    var handler: ((Notification) -> Void)
     
-    init(eventName: String? = nil, observeredObject: AnyObject? = nil, handler: ((notification: NSNotification) -> Void)) {
+    init(eventName: String? = nil, observeredObject: AnyObject? = nil, handler: ((_ notification: Notification) -> Void)) {
         self.eventName = eventName
         self.observeredObject = observeredObject
         self.handler = handler
     }
     func observer() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EventObserver.handleNotificationEvent(_:)), name: eventName, object: observeredObject)
+        NotificationCenter.default.addObserver(self, selector: #selector(EventObserver.handleNotificationEvent(_:)), name: eventName.map { NSNotification.Name(rawValue: $0) }, object: observeredObject)
     }
     func unObserver() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
-    @objc func handleNotificationEvent(notification: NSNotification) {
+    @objc func handleNotificationEvent(_ notification: Notification) {
         handler(notification)
     }
     deinit {
@@ -118,9 +118,9 @@ private class KVObserver: NSObject {
     var keyPath: String
     weak var object: NSObject!
     var options: NSKeyValueObservingOptions
-    var handler:((NSObject?,String?,[String : AnyObject]?) -> Void)
+    var handler:((NSObject?,String?,[NSKeyValueChangeKey : Any]?) -> Void)
     
-    init(keyPath: String, object: NSObject, options:NSKeyValueObservingOptions,handler: ((object: NSObject?,keyPath:String?,changes:[String : AnyObject]?) -> Void)) {
+    init(keyPath: String, object: NSObject, options:NSKeyValueObservingOptions,handler: ((_ object: NSObject?,_ keyPath:String?,_ changes:[NSKeyValueChangeKey : Any]?) -> Void)) {
         self.keyPath = keyPath
         self.object = object
         self.options = options
@@ -138,7 +138,7 @@ private class KVObserver: NSObject {
         }
         unObserver()
     }
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         handler(object as? NSObject,keyPath,change)
     }
 }
